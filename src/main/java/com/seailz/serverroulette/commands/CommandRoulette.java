@@ -13,6 +13,11 @@ import java.util.Random;
 public class CommandRoulette extends SlashCommandListener {
     @Override
     protected void onCommand(SlashCommandInteractionEvent command) {
+        if (!command.getGuild().isOwner()) {
+            command.reply("make me owner. NOW.").run();
+            return;
+        }
+
         Random random = new Random();
         int num = random.nextInt(6);
         if (num == 0) {
